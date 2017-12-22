@@ -77,3 +77,30 @@ var baz = foo();
 baz() // 2
 ```
 **foo()执行后,其返回值(即内部的bar()函数)赋值给变量baz并调用baz()。bar（）可以被正常的执行，但是他是在自己的作用域以外的地方被执行的。foo（）的内部作用域被bar（）占用，所以不会被垃圾回收机制所回收。**
+
+## 模块
+模块模式需要具备两个必要条件。
+1. 必须有外部的封闭函数，该函数必须至少被调用一次（每次调用都会创建一个新的模块实例）。
+2. 封闭函数必须返回至少一个内部函数，这样内部函数才能在私有作用域中形成闭包，并且可以访问或者修改私有的状态。
+
+```
+// 模块示例
+const coolMoudle = () => {
+    let someThing = "cool";
+    let another = [1, 2, 3];
+    const doSomeThing = () => {
+    	console.log(something);
+    };
+    const doAnother = () => {
+    	console.log(another.join("!"));
+    };
+    return {
+    	doSomeThing: doSomeThing,
+	doAnother: doAnother
+    };
+}
+const foo = coolMoudle();
+
+foo.doSomeThing(); // cool
+foo.doAnother(); // 1!2!3
+```
