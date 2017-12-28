@@ -113,3 +113,48 @@ foo.doAnother(); // 1!2!3
 
 关于this需要澄清的两处: 1. this 并不指向函数自身; 2. this并不指向函数的词法作用域。
 **this是在函数被调用时发生的绑定，它指向什么完全取决于函数在哪里被调用。**
+
+例1
+```
+function foo(num) {
+    console.log("foo:" + num);
+    this.count++;
+}
+foo.count = 0;
+var i;
+for(i = 0; i < 10; i ++) {
+    if(i > 5) {
+        foo.call(this, i);
+    }
+}
+
+// foo:6
+// foo:7
+// foo:8
+// foo:9
+
+console.log(foo.count); // 0
+console.log(this.count); // NaN
+```
+
+例2
+```
+function foo(num) {
+    console.log("foo:" + num);
+    this.count++;
+}
+foo.count = 0;
+var i;
+for(i = 0; i < 10; i ++) {
+    if(i > 5) {
+        foo.call(foo, i);
+    }
+}
+
+// foo:6
+// foo:7
+// foo:8
+// foo:9
+
+console.log(foo.count); // 0
+```
