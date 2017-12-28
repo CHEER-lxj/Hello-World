@@ -1,4 +1,4 @@
-# <你不知道的javascript(上)>读书笔记
+# <你不知道的javascript(上)>读书笔记  (第一部分)
 
 
 # 第一章
@@ -104,3 +104,12 @@ const foo = coolMoudle();
 foo.doSomeThing(); // cool
 foo.doAnother(); // 1!2!3
 ```
+
+# <你不知道的javascript(上)>读书笔记  (第二部分)
+
+
+# 第一章
+## 关于this
+
+关于this需要澄清的两处: 1. this 并不指向函数自身; 2. this并不指向函数的词法作用域。
+**this是在函数被调用时发生的绑定，它指向什么完全取决于函数在哪里被调用。**
