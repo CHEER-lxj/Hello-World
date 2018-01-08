@@ -161,6 +161,8 @@ console.log(foo.count); // 0
 # 第二章
 ## this全面解析
 **这一章应该是第二部分最重要的一章,也是最难的一章,需要反复阅读理解。**
+理解调用位置
+![调用位置及调用栈示例](https://github.com/CHEER-lxj/You-do-not-know-JS/raw/master/img/diaoyongweizhi.png)
 ### 绑定规则
 - 默认绑定
 - 隐式绑定
