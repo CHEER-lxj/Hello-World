@@ -243,3 +243,57 @@ es6中箭头函数不使用this的四种绑定规则，而是依据外层作用�
 #### 建议
 1. 只使用词法作用域并且完全抛弃错误的this风格的代码；
 2. 完全采用this风格，必要时使用bind(...),尽量避免使用 self = this 和箭头函数。
+
+# 第三章 对象
+
+对象有两种形式，声明（文字）形式和构造形式。
+
+文字语法：
+```
+var myObj = {
+    key: value,
+    key2: value2
+    //...
+};
+```
+构造形式:
+```
+var myObj = new Object();
+myObj.key = value;
+```
+两种形式生成的对象是一样的。区别：在文字声明中可以添加多个键值对，在构造形式中只能逐一添加。
+
+## 类型
+主要类型:
+- string
+- number
+- boolean
+- null
+- undefined
+- object
+
+**注: 简单基本类型(string、boolean、number、null、undefined)本身并不是对象。数组和函数都是对象的一种子类型。**
+
+## javaScript 内置对象
+- String
+- Number
+- Boolean
+- Object
+- Function
+- Array
+- Date
+- RegExp
+- Error
+
+## es6可计算属性名
+在文字形式（对象字面量）中，使用[]包裹一个表达式当属性名。
+```
+var prefix = "foo";
+var myObject = {
+    [prefix + "bar"]: "hello",
+    [prefix + "baz"]: "world"
+};
+
+myObject["foobar"]; // hello
+myObject["foobaz"]; // world
+```
