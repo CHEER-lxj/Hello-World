@@ -297,3 +297,27 @@ var myObject = {
 myObject["foobar"]; // hello
 myObject["foobaz"]; // world
 ```
+## 复制对象
+潜拷贝只复制一层对象的属性，而深拷贝会复制所有层。潜拷贝，若原对象有引用类型，则复制后的对象与原对象有相同的引用，修改新对象会影响原对象；深拷贝就不会。
+潜拷贝更常用，深拷贝可使用JSON来巧妙复制。
+
+```
+var newObj = JSON.parse(JSON.stringify(someObj));
+```
+
+深拷贝:
+```
+var obj = { a:1, arr: [2,3] };
+var shallowObj = shallowCopy(obj);
+
+function shallowCopy(src) {
+  var dst = {};
+  for (var prop in src) {
+    if (src.hasOwnProperty(prop)) {
+      dst[prop] = src[prop];
+    }
+  }
+  return dst;
+}
+```
+## 不变性
