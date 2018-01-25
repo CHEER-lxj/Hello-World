@@ -320,13 +320,46 @@ function shallowCopy(src) {
   return dst;
 }
 ```
-## 属描述符
+## 属性描述符
 属性描述符是从es5开始增加的。属性描述符，即直接检测属性特性的方法，比如判断属性是否是只读。创建一个普通对象时，属性描述符会使用默认值。
 
 ```
 var myObject = {a: 2};
 Object.getOwnPropertyDescriptor(myObject, "a");
 {
-    
+   value: 2,
+   writable: true,
+   enumerable: true,
+   configurable: true
 }
 ```
+## 属性存在性与枚举
+
+使用in验证存在性,但是会检验对象及其原型链;使用hasOwnProperty只检验对象是否有这个属性。
+```
+var myObject = {};
+Object.defineProperty(
+    myObject,
+    "a",
+    {enumerable: true, value: 2}
+);
+Object.defineProperty(
+    myObject,
+    "b",
+    {enumerable: false, value: 3}
+);
+
+myObject.propertyIsEnumerable("a"); // true
+myObject.propertyIsEnumerable("b"); // false
+
+Object.keys(myObject); // ["a"]
+Object.getOwnPropertyNames(myObject); // ["a", "b"]
+```
+
+使用in可以判断属性是否存在，但是for...in...循环却不能显示不可枚举的属性值。
+
+**propertyIsEnumerable检查只存在对象上,且满足enumerable的属性;
+Object.keys返回数组，包含可枚举属性；
+Object.getOwnPropertyNames返回数组，包含所有属性；
+Object.keys与Object.getOwnPropertyNames只查找对象直接包含的属性；
+in查原型链，hasOwnProperty不查。**
