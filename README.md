@@ -320,4 +320,13 @@ function shallowCopy(src) {
   return dst;
 }
 ```
-## 不变性
+## 属描述符
+属性描述符是从es5开始增加的。属性描述符，即直接检测属性特性的方法，比如判断属性是否是只读。创建一个普通对象时，属性描述符会使用默认值。
+
+```
+var myObject = {a: 2};
+Object.getOwnPropertyDescriptor(myObject, "a");
+{
+    
+}
+```
