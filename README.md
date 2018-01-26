@@ -363,3 +363,5 @@ Object.keys返回数组，包含可枚举属性；
 Object.getOwnPropertyNames返回数组，包含所有属性；
 Object.keys与Object.getOwnPropertyNames只查找对象直接包含的属性；
 in查原型链，hasOwnProperty不查。**
+
+## 遍历
