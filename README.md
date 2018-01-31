@@ -1,4 +1,4 @@
-# <你不知道的javascript(上)>读书笔记  (第一部分)
+# <你不知道的javascript（上）>读书笔记  (第一部分)
 
 
 # 第一章
@@ -435,3 +435,8 @@ a.myLabel(); // "obj a"
 
 1. Bar.prototype = Foo.prototype 并不会创建一个关联到Bar.prototype的新对象,只是让Bar.prototype直接引用新对象。因此当执行类似于Bar.prototype.mylabel = ... 时,会直接修改Foo.prototype对象本身。
 2. Bar.prototype = new Foo()的确会创建一个关联到Bar.prototype的新对象。但是它使用了Foo(...)的"构造函数调用"，如果函数Foo有一些副作用，就会影响到Bar()的"后代"。
+
+## Object.create()
+Object.create用来做对象关联。他会创建一个新对象并把它关联到指定的对象，而不会引起一些副作用。Object.create(null)会创建一个拥有空[[Prototype]]链接的对象，这个对象无法进行委托，没有原型链。通常被称作“字典”，非常适合用来存储数据。
+
+# 第六章 行为委托
