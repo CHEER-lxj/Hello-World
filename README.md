@@ -404,3 +404,34 @@ myObj.foo = "bar"
 3. 如果在[[Propotype]]链上层存在foo并且他是一个setter，那就一定会调用这个setter。foo不会被添加到myObj，也不会重新定义foo的这个setter。
 
 **只读属性会阻止[[Prototype]]链下层隐式创建同名属性。且这个限制只存在=赋值中，使用Object.defineProperty就不受影响。使用屏蔽得不偿失，应当尽量避免使用。**
+
+## 原型继承
+
+```
+function Foo(name) {
+    this.name = name;
+}
+Foo.prototype.myName = function() {
+    return this.name;
+}
+function Bar(name, label) {
+    Foo.call(this, name);
+    this.label = label;
+}
+
+Bar.prototype = Object.create(Foo.prototype);
+
+Bar.prototype.myLabel = function() {
+    return this.label;
+}
+
+var a = new Bar("a", "obj a");
+
+a.myName(); // "a"
+a.myLabel(); // "obj a"
+```
+
+使用 Object.create() 做原型继承，而不使用 Bar.prototype = Foo.prototype 或者 Bar.prototype = new Foo() 是因为这两种都会与预期有出入。使用Object.create()的缺点是，需要抛弃默认的Bar.prototype对象。es6中可以直接修改现有的Bar.prototype对象。使用方法：**Object.setPrototypeOf(Bar.prototype, Foo.prototype);**
+
+1. Bar.prototype = Foo.prototype 并不会创建一个关联到Bar.prototype的新对象,只是让Bar.prototype直接引用新对象。因此当执行类似于Bar.prototype.mylabel = ... 时,会直接修改Foo.prototype对象本身。
+2. Bar.prototype = new Foo()的确会创建一个关联到Bar.prototype的新对象。但是它使用了Foo(...)的"构造函数调用"，如果函数Foo有一些副作用，就会影响到Bar()的"后代"。
