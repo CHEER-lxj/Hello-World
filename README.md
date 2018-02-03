@@ -447,3 +447,31 @@ javaScript倡导对象之间的委托，这样不限于垂直的父与子类的�
 # 你不知道的JavaScript（中）
 # 第一部分 第一章 类型
 
+javaScript是一种弱类型语言,但是会进行强制类型转换。
+
+## 内置类型
+javaScript有7种常见类型
+- null
+- undefined
+- boolean
+- number
+- string
+- object
+- symbol（ES6新增）
+
+除对象外，统称为基本类型。
+
+使用typeof检验null是不成立的。这是javaScript中已经存在了20多年的一个bug，不会修复了。
+typeof null === 'object'; //true
+
+因此需要使用复合类型来检验null: 
+```
+var a = null;
+(!a && typeof a === 'object'); // true
+```
+**另: 函数是对象的一个子类型,数组也是对象的一种子类型。**
+```
+typeof function a(){} === "function"; // true
+typeof [1,2,3] === 'object'; // true
+```
+
