@@ -475,3 +475,19 @@ typeof function a(){} === "function"; // true
 typeof [1,2,3] === 'object'; // true
 ```
 
+## 值和类型
+javaScript中的变量没有类型，值有类型，但是引擎不需要变量总是持有与其初始值相同的类型。
+
+未持有值的变量（未被初始化），会赋给undefined，实际应该为undeclared。javaScript对二者不做区分。
+
+编码时，可以通过typeof或者全局变量（window）来检查未定义的变量，防止报错。但是代码有可能不是运行在浏览器中，比如node.js，所以typeof是个不错的选择。
+
+```
+function doSomeThing() {
+    var helper = 
+        (typeof Feature !== "undefined") ? Feature : function() {/*.. default feature ..*/};
+    var val = helper();
+    //..
+}
+```
+
