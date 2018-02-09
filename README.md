@@ -491,3 +491,17 @@ function doSomeThing() {
 }
 ```
 
+# 第二章  值
+
+javaScript中的值是有类型的。进行操作时通常有一些小技巧。
+
+- 字符串是一种类数组的类型，没有数组的一些原生方法，但是有需要时，可以转换为数组进行操作。
+
+```
+let arrString = 'food'
+// 将字符串转化为数组 翻转 再拼接为字符串
+arrString = arrString.split('').reverse().join('')
+console.log(arrString)
+```
+在使用es6之前的方法拼接字符串模板时,也可以考虑使用这种方法,会比使用"+"进行拼接要清晰很多。如果要进行很多类数组操作,可以考虑直接初始化为数组
+
