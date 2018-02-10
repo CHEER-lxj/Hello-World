@@ -505,3 +505,13 @@ console.log(arrString)
 ```
 在使用es6之前的方法拼接字符串模板时,也可以考虑使用这种方法,会比使用"+"进行拼接要清晰很多。如果要进行很多类数组操作,可以考虑直接初始化为数组
 
+undefined 类型只有一个值，即undefined。null类型也只有一个值，即null。永远不要为undefined赋值。通过void操作符可以返回undefined。
+
+ES6可以使用Number.isNaN来检验是不是NaN。NaN是唯一一个不等于它本身的值。及 NaN != NaN 为true。
+
+js中存在-0的概念，为了标记符号位。
+
+ES6中使用Object.is()判断两个值是否绝对相等。但是优先使用 === 和 == ，因为效率更高。
+
+javaScript中没有指针。简单值总是通过值复制的方式来赋值/传递（包括null、undefined、字符串、数字、布尔和ES6中的symbol）。复合值（对象和函数，对象中又包含数组、封装对象）总是通过引用复制的方式来赋值/传递。
+
